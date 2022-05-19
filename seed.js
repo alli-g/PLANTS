@@ -27,7 +27,8 @@ const project = [
     deadline: '2022-07-17',
     priority: 1,
     description: 'Complete old HW',
-  },{
+  },
+  {
     title: 'Get side tables',
     deadline: '2022-07-01',
     priority: 7,

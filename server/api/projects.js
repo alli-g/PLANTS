@@ -1,5 +1,6 @@
-const Project = require('../db/Project');
+const Project = require('../db/project');
 const project = require('express').Router();
+const Robot = require('../db/robot');
 
 project.get('/', async (req, res, next) => {
   try {
@@ -7,6 +8,18 @@ project.get('/', async (req, res, next) => {
     res.json(projects);
   } catch (err) {
     next(err);
+  }
+});
+
+project.get('/:id', async (req, res, next) => {
+  try {
+    const oneProj = await Project.findAll({
+      where: { id: req.params.id },
+      include: [{ model: Robot }],
+    });
+    res.json(oneProj);
+  } catch (error) {
+    next(error);
   }
 });
 
