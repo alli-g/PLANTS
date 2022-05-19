@@ -23,4 +23,13 @@ project.get('/:id', async (req, res, next) => {
   }
 });
 
+project.post('/', async (req, res, next) => {
+  try {
+    const newProject = await Project.create(req.body);
+    res.send(newProject);
+  } catch (error) {
+    next(error);
+  }
+});
+
 module.exports = project;

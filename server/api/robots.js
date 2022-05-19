@@ -27,4 +27,14 @@ robot.get('/:id', async (req, res, next) => {
   }
 });
 
+robot.post('/', async (req, res, next) => {
+  try {
+    const newRobot = await Robot.create(req.body);
+    res.send(newRobot);
+  } catch (error) {
+    res.send(error);
+    next(error);
+  }
+});
+
 module.exports = robot;

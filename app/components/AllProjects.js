@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { getAllProjects } from '../redux/projects';
 import { Link } from 'react-router-dom';
+import NewProject from './NewProject';
 
 // Notice that we're exporting the AllProjects component twice. The named export
 // (below) is not connected to Redux, while the default export (at the very
@@ -19,8 +20,8 @@ class AllProjects extends React.Component {
         <ul className="container">
           {Array.isArray(projects)
             ? projects.map((project) => (
-                <Link to={`/projects/${project.id}`}>
-                  <div className="card" key={project.id}>
+                <Link to={`/projects/${project.id}`} key={project.id}>
+                  <div className="card">
                     <h3>{project.title} </h3>
                     <p>Due by {project.deadline.slice(0, 10)}</p>
                     <p>priority level: {project.priority}</p>
@@ -29,6 +30,10 @@ class AllProjects extends React.Component {
               ))
             : 'No projects here'}
         </ul>
+        <div>
+          <h3> Add a new project to the system</h3>
+          <NewProject />
+        </div>
       </div>
     );
   }
