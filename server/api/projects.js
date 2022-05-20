@@ -32,4 +32,14 @@ project.post('/', async (req, res, next) => {
   }
 });
 
+project.delete('/:id', async (req, res, next) => {
+  try {
+    const byeProject = await Project.findByPk(req.params.id);
+    await byeProject.destroy();
+    res.send(byeProject);
+  } catch (error) {
+    console.error(error);
+  }
+});
+
 module.exports = project;

@@ -29,7 +29,6 @@ class NewProject extends React.Component {
     evt.preventDefault();
     this.props.createNewProject({ ...this.state });
     //^^from mapDispatch
-    console.log('***state***', this.state);
     //error handling
     this.setState({
       title: '',
@@ -96,7 +95,7 @@ class NewProject extends React.Component {
             />
           </p>
           <button type="submit">Submit</button>
-          <button>
+          <button type="button">
             <Link to="/">Oops!</Link>
           </button>
         </form>

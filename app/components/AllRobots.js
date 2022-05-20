@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { getAllRobots, createNewRobot } from '../redux/robots';
+import { getAllRobots, deleteOneRobot } from '../redux/robots';
 import { Link } from 'react-router-dom';
 import NewRobot from './NewRobot';
 
@@ -10,25 +10,32 @@ import NewRobot from './NewRobot';
 class AllRobots extends React.Component {
   componentDidMount() {
     this.props.getAllRobotsInReact();
+    this.props.deleteOneRobot();
   }
 
   render() {
     let robots = this.props.allRobotsInReact;
-    console.log(robots);
     return (
       <div>
         <h2 className="section-title"> All Robots </h2>
         <ul className="container">
           {Array.isArray(robots)
             ? robots.map((robot) => (
-                <Link to={`/robots/${robot.id}`} key={robot.id}>
-                  <div className="card">
+                <div className="card" key={robot.id}>
+                  <Link to={`/robots/${robot.id}`}>
                     <li>
                       <h3>{robot.name}</h3>
                       <img src={robot.imageUrl} />
                     </li>
-                  </div>
-                </Link>
+                  </Link>
+                  <button
+                    type="button"
+                    className="delete"
+                    onClick={() => this.props.deleteOneRobot(robot.id)}
+                  >
+                    X
+                  </button>
+                </div>
               ))
             : 'No robots here'}
         </ul>
@@ -45,7 +52,8 @@ const mapState = (state) => {
   return { allRobotsInReact: state.robots };
 };
 
-const mapDispatch = (dispatch) => ({
+const mapDispatch = (dispatch, { history }) => ({
   getAllRobotsInReact: () => dispatch(getAllRobots()),
+  deleteOneRobot: (id) => dispatch(deleteOneRobot(id, history)),
 });
 export default connect(mapState, mapDispatch)(AllRobots);

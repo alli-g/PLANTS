@@ -37,4 +37,14 @@ robot.post('/', async (req, res, next) => {
   }
 });
 
+robot.delete('/:id', async (req, res, next) => {
+  try {
+    const byeRobot = await Robot.findByPk(req.params.id);
+    await byeRobot.destroy();
+    res.send(byeRobot);
+  } catch (error) {
+    console.error(error);
+  }
+});
+
 module.exports = robot;

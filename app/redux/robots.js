@@ -3,6 +3,7 @@ import axios from 'axios';
 //ACTION TYPES
 const GOT_ALL_ROBOTS = 'GOT_ALL_ROBOTS';
 const CREATE_ROBOT = 'CREATE_ROBOT';
+const DELETE_ROBOT = 'DELETE_ROBOT';
 
 //ACTION CREATORS
 export const setRobots = () => {};
@@ -14,6 +15,11 @@ export const fetchRobots = (robots) => ({
 
 export const createRobot = (robot) => ({
   type: CREATE_ROBOT,
+  robot,
+});
+
+export const deleteRobot = (robot) => ({
+  type: DELETE_ROBOT,
   robot,
 });
 
@@ -37,7 +43,19 @@ export const createNewRobot = (robot, history) => {
       dispatch(createRobot(data));
       history.push('/');
     } catch (err) {
-      console.error(err);
+      console.log(err);
+    }
+  };
+};
+
+export const deleteOneRobot = (id, history) => {
+  return async (dispatch) => {
+    try {
+      const { data } = await axios.delete(`api/robots/${id}`);
+      dispatch(deleteRobot(data));
+      history.push('/robots');
+    } catch (error) {
+      console.log(error);
     }
   };
 };
@@ -50,8 +68,10 @@ export default function robotsReducer(state = initialState, action) {
   switch (action.type) {
     case GOT_ALL_ROBOTS:
       return action.allRobots;
+    case DELETE_ROBOT:
+      return state.filter((rbt) => rbt.id !== action.robot.id);
     case CREATE_ROBOT:
-        return [...state, action.robot]
+      return [...state, action.robot];
     default:
       return state;
   }

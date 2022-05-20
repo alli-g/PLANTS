@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { getAllProjects } from '../redux/projects';
+import { getAllProjects, deleteOneProject } from '../redux/projects';
 import { Link } from 'react-router-dom';
 import NewProject from './NewProject';
 
@@ -10,6 +10,7 @@ import NewProject from './NewProject';
 class AllProjects extends React.Component {
   componentDidMount() {
     this.props.getAllProjectsInReact();
+    this.props.deleteOneProject();
   }
 
   render() {
@@ -20,13 +21,20 @@ class AllProjects extends React.Component {
         <ul className="container">
           {Array.isArray(projects)
             ? projects.map((project) => (
-                <Link to={`/projects/${project.id}`} key={project.id}>
-                  <div className="card">
+                <div className="card" key={project.id}>
+                  <Link to={`/projects/${project.id}`}>
                     <h3>{project.title} </h3>
                     <p>Due by {project.deadline.slice(0, 10)}</p>
                     <p>priority level: {project.priority}</p>
-                  </div>
-                </Link>
+                  </Link>
+                  <button
+                    type="button"
+                    className="delete"
+                    onClick={() => this.props.deleteOneProject(project.id)}
+                  >
+                    X
+                  </button>
+                </div>
               ))
             : 'No projects here'}
         </ul>
@@ -43,8 +51,9 @@ const mapState = (state) => {
   return { allProjectsInReact: state.projects };
 };
 
-const mapDispatch = (dispatch) => ({
+const mapDispatch = (dispatch, { history }) => ({
   getAllProjectsInReact: () => dispatch(getAllProjects()),
+  deleteOneProject: (id) => dispatch(deleteOneProject(id, history)),
 });
 
 export default connect(mapState, mapDispatch)(AllProjects);

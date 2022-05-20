@@ -3,6 +3,7 @@ import axios from 'axios';
 //ACTION TYPES
 const GOT_PROJECT = 'GOT_PROJECT';
 
+
 //ACTION CREATORS
 export const setProject = () => {};
 
@@ -10,6 +11,8 @@ export const fetchProject = (project) => ({
   type: GOT_PROJECT,
   oneProject: project,
 });
+
+
 
 //THUNKS
 
@@ -23,6 +26,8 @@ export const getOneProject = (id) => {
     }
   };
 };
+
+
 
 // Take a look at app/redux/index.js to see where this reducer is
 // added to the Redux store with combineReducers

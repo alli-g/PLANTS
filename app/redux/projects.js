@@ -3,6 +3,7 @@ import axios from 'axios';
 //ACTION TYPES
 const GOT_ALL_PROJECTS = 'GOT_ALL_PROJECTS';
 const CREATE_PROJECT = 'CREATE_PROJECT';
+const DELETE_PROJECT = 'DELETE_PROJECT';
 
 //ACTION CREATORS
 export const setProjects = () => {};
@@ -14,6 +15,11 @@ export const fetchProjects = (projects) => ({
 
 export const createProject = (project) => ({
   type: CREATE_PROJECT,
+  project,
+});
+
+export const deleteProject = (project) => ({
+  type: DELETE_PROJECT,
   project,
 });
 
@@ -35,9 +41,21 @@ export const createNewProject = (project, history) => {
     try {
       const { data } = await axios.post('/api/projects', project);
       dispatch(createProject(data));
-      history.push('/');
+      // history.push('/');
     } catch (error) {
       console.error(error);
+    }
+  };
+};
+
+export const deleteOneProject = (id, history) => {
+  return async (dispatch) => {
+    try {
+      const { data } = await axios.delete(`/api/projects/${id}`);
+      dispatch(deleteProject(data));
+      history.push('/projects');
+    } catch (err) {
+      console.log(err);
     }
   };
 };
@@ -52,6 +70,8 @@ export default function projectsReducer(state = initialState, action) {
       return action.allProjects;
     case CREATE_PROJECT:
       return [...state, action.project];
+    case DELETE_PROJECT:
+      return state.filter((pjt) => pjt.id !== action.project.id);
     default:
       return state;
   }
