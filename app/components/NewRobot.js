@@ -28,7 +28,6 @@ class NewRobot extends React.Component {
     evt.preventDefault();
     this.props.createNewRobot({ ...this.state });
     //^^from mapDispatch
-    console.log('***state***', this.state);
     //error handling
     this.setState({
       name: '',

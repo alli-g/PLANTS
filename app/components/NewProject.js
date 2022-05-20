@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { createNewProject } from '../redux/robots';
+import { createNewProject } from '../redux/projects';
 
 class NewProject extends React.Component {
   constructor() {
@@ -18,10 +18,10 @@ class NewProject extends React.Component {
   }
 
   valueChange(event) {
-    const title = event.target.title;
+    const name = event.target.name;
 
     this.setState({
-      [title]: event.target.value,
+      [name]: event.target.value,
     });
   }
 
@@ -45,11 +45,11 @@ class NewProject extends React.Component {
       <div>
         <form id="project-form" onSubmit={this.submit}>
           <p>
-            <label htmlFor="projectName"> Projects's Title:</label>
+            <label htmlFor="projectName"> Project's Title:</label>
             <input
               name="title"
               type="text"
-              placeholder="name..."
+              placeholder="Business Time..."
               value={this.state.title}
               onChange={this.valueChange}
             />
@@ -74,6 +74,16 @@ class NewProject extends React.Component {
               <option value="false">No</option>
               <option value="true">Yes</option>
             </select>
+          </p>
+          <p>
+            <label htmlFor="priority">Project priority out of 10:</label>
+            <input
+              name="priority"
+              type="number"
+              placeholder="10"
+              value={this.state.priority}
+              onChange={this.valueChange}
+            />
           </p>
           <p>
             <label htmlFor="description">Short description of project:</label>

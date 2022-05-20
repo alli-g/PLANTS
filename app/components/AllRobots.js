@@ -14,6 +14,7 @@ class AllRobots extends React.Component {
 
   render() {
     let robots = this.props.allRobotsInReact;
+    console.log(robots);
     return (
       <div>
         <h2 className="section-title"> All Robots </h2>
