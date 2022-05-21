@@ -21,6 +21,12 @@ class SingleProject extends React.Component {
               <li>Due by {singleProject.deadline.slice(0, 10)}</li>
               <li>The priority is {singleProject.priority} out of 10</li>
             </ul>
+            <button>
+              <Link to={`/projects/${singleProject.id}/edit`}>
+                Edit Project
+              </Link>
+            </button>
+            <button>Complete</button>
             <h3>Robots assigned to get this work done</h3>
             {singleProject.robots.length > 0 ? (
               <ul>

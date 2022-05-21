@@ -11,6 +11,15 @@ project.get('/', async (req, res, next) => {
   }
 });
 
+project.post('/', async (req, res, next) => {
+  try {
+    const newProject = await Project.create(req.body);
+    res.send(newProject);
+  } catch (error) {
+    next(error);
+  }
+});
+
 project.get('/:id', async (req, res, next) => {
   try {
     const oneProj = await Project.findAll({
@@ -23,10 +32,11 @@ project.get('/:id', async (req, res, next) => {
   }
 });
 
-project.post('/', async (req, res, next) => {
+project.put('/:id', async (req, res, next) => {
   try {
-    const newProject = await Project.create(req.body);
-    res.send(newProject);
+    const proj = await Project.findByPk(req.params.id);
+    await proj.update(res.body);
+    res.send(proj);
   } catch (error) {
     next(error);
   }

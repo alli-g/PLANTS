@@ -7,6 +7,7 @@ import SingleRobot from './SingleRobot';
 import SingleProject from './SingleProject';
 import NewRobot from './NewRobot';
 import NewProject from './NewProject';
+import UpdateProject from './UpdateProject';
 
 const Routes = () => {
   return (
@@ -24,7 +25,9 @@ const Routes = () => {
             <Route exact path="/robots/:id(d+)" component={SingleRobot} />
             <Route exact path="/projects" component={AllProjects} />
             <Route exact path="/projects/create" component={NewProject} />
-            <Route exact path="/projects/:id(d+)" component={SingleProject} />
+
+            <Route exact path="/projects/:id" component={SingleProject} />
+            <Route exact path="/projects/:id/edit" component={UpdateProject} />
           </Switch>
         </main>
       </div>

@@ -4,8 +4,8 @@ import { Link } from 'react-router-dom';
 import { createNewProject } from '../redux/projects';
 
 class NewProject extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       title: '',
       deadline: '',

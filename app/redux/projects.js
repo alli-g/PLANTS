@@ -4,6 +4,7 @@ import axios from 'axios';
 const GOT_ALL_PROJECTS = 'GOT_ALL_PROJECTS';
 const CREATE_PROJECT = 'CREATE_PROJECT';
 const DELETE_PROJECT = 'DELETE_PROJECT';
+const UPDATE_PROJECT = 'UPDATE_PROJECT';
 
 //ACTION CREATORS
 export const setProjects = () => {};
@@ -20,6 +21,11 @@ export const createProject = (project) => ({
 
 export const deleteProject = (project) => ({
   type: DELETE_PROJECT,
+  project,
+});
+
+export const updateProject = (project) => ({
+  type: UPDATE_PROJECT,
   project,
 });
 
@@ -60,6 +66,21 @@ export const deleteOneProject = (id, history) => {
   };
 };
 
+export const updateOneProject = (project, history) => {
+  return async (dispatch) => {
+    try {
+      let pjt = project[0];
+      const { data } = await axios.put(`api/projects/${pjt.id}`, pjt);
+      dispatch(updateProject(data));
+      console.log(data);
+      history.push(`/projects/${pjt.id}`);
+    } catch (error) {
+      console.log(project[0]);
+      console.log(error);
+    }
+  };
+};
+
 // Take a look at app/redux/index.js to see where this reducer is
 // added to the Redux store with combineReducers
 const initialState = [];
@@ -72,6 +93,10 @@ export default function projectsReducer(state = initialState, action) {
       return [...state, action.project];
     case DELETE_PROJECT:
       return state.filter((pjt) => pjt.id !== action.project.id);
+    case UPDATE_PROJECT:
+      return state.map((pjt) =>
+        pjt.id === action.project.id ? action.project : pjt
+      );
     default:
       return state;
   }
