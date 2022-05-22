@@ -4,6 +4,7 @@ import axios from 'axios';
 const GOT_ALL_ROBOTS = 'GOT_ALL_ROBOTS';
 const CREATE_ROBOT = 'CREATE_ROBOT';
 const DELETE_ROBOT = 'DELETE_ROBOT';
+const UPDATE_ROBOT = 'UPDATE_ROBOT';
 
 //ACTION CREATORS
 export const setRobots = () => {};
@@ -20,6 +21,11 @@ export const createRobot = (robot) => ({
 
 export const deleteRobot = (robot) => ({
   type: DELETE_ROBOT,
+  robot,
+});
+
+export const updateRobot = (robot) => ({
+  type: UPDATE_ROBOT,
   robot,
 });
 
@@ -60,6 +66,18 @@ export const deleteOneRobot = (id, history) => {
   };
 };
 
+export const updateOneRobot = (robot, history) => {
+  return async (dispatch) => {
+    try {
+      const { data } = await axios.put(`/api/robots/${robot.id}`, robot);
+      dispatch(updateRobot(data));
+      history.push(`/robots/${robot.id}`);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
+
 // Take a look at app/redux/index.js to see where this reducer is
 // added to the Redux store with combineReducers
 const initialState = [];
@@ -72,6 +90,14 @@ export default function robotsReducer(state = initialState, action) {
       return state.filter((rbt) => rbt.id !== action.robot.id);
     case CREATE_ROBOT:
       return [...state, action.robot];
+    case UPDATE_ROBOT:
+      return state.map((rbt) => {
+        if (rbt.id === action.robot.id) {
+          return action.robot[0];
+        } else {
+          return rbt;
+        }
+      });
     default:
       return state;
   }

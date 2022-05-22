@@ -21,6 +21,9 @@ class SingleRobot extends React.Component {
               <li>Fueled by {singleRobot.fuelType}</li>
               <li>Currently sitting at {singleRobot.fuelLevel}%</li>
             </ul>
+            <button>
+              <Link to={`/robots/${singleRobot.id}/edit`}>Edit Robot</Link>
+            </button>
             <h3>Assigned Projects</h3>
             {singleRobot.projects.length > 0 ? (
               <ul>

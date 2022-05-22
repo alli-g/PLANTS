@@ -69,14 +69,12 @@ export const deleteOneProject = (id, history) => {
 export const updateOneProject = (project, history) => {
   return async (dispatch) => {
     try {
-      let pjt = project[0];
-      const { data } = await axios.put(`api/projects/${pjt.id}`, pjt);
+      const { data } = await axios.put(`/api/projects/${project.id}`, project);
+
       dispatch(updateProject(data));
-      console.log(data);
-      history.push(`/projects/${pjt.id}`);
+      history.push(`/projects/${project.id}`);
     } catch (error) {
-      console.log(project[0]);
-      console.log(error);
+      console.error(error);
     }
   };
 };
@@ -94,9 +92,13 @@ export default function projectsReducer(state = initialState, action) {
     case DELETE_PROJECT:
       return state.filter((pjt) => pjt.id !== action.project.id);
     case UPDATE_PROJECT:
-      return state.map((pjt) =>
-        pjt.id === action.project.id ? action.project : pjt
-      );
+      return state.map((pjt) => {
+        if (pjt.id === action.project.id) {
+          return action.project[0];
+        } else {
+          return pjt;
+        }
+      });
     default:
       return state;
   }

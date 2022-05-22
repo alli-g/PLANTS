@@ -47,4 +47,14 @@ robot.delete('/:id', async (req, res, next) => {
   }
 });
 
+robot.put('/:id', async (req, res, next) => {
+  try {
+    const upRobot = await Robot.findByPk(req.params.id);
+    await upRobot.update(req.body);
+    res.send(upRobot);
+  } catch (error) {
+    console.err(error);
+  }
+});
+
 module.exports = robot;

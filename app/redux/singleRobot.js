@@ -17,6 +17,7 @@ export const getOneRobot = (id) => {
   return async (dispatch) => {
     try {
       const { data } = await axios.get(`/api/robots/${id}`);
+      console.log(data);
       dispatch(fetchRobot(data));
     } catch (err) {
       console.error(err);

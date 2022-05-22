@@ -8,9 +8,7 @@ class UpdateProject extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      id: 0,
       title: '',
-
       complete: false,
     };
     this.valueChange = this.valueChange.bind(this);
@@ -18,22 +16,25 @@ class UpdateProject extends React.Component {
   }
 
   componentDidMount() {
-    this.props.getSingleProjectInReact(this.props.match.params.id);
+    this.props.getSingleProjectInReact(this.props.match.params.id).then(() => {
+      let project = this.props.project[0];
+      this.setState({ title: project.title, complete: project.complete });
+    });
   }
 
-  // componentWillUnmount() {
-  //   this.props.clearProject();
-  // }
-  componentDidUpdate(prevProps) {
-    let curr = this.props.project[0];
-    if (!Array.isArray(prevProps.project)) {
-      this.setState({
-        id: curr.id || 0,
-        title: curr.title || '',
-        complete: curr.complete || false,
-      });
-    }
+  componentWillUnmount() {
+    this.props.clearProject();
   }
+  // componentDidUpdate(prevProps) {
+  //   let curr = this.props.project[0];
+  //   if (!Array.isArray(prevProps.project) || prevProps.project.length > 0) {
+  //     this.setState({
+  //       id: curr.id || 0,
+  //       title: curr.title || '',
+  //       complete: curr.complete || false,
+  //     });
+  //   }
+  // }
 
   valueChange(evt) {
     this.setState({
@@ -43,10 +44,9 @@ class UpdateProject extends React.Component {
 
   submit(evt) {
     evt.preventDefault();
-    this.props.updateOneProject({
-      ...this.props.project,
-      ...this.state.singleProject,
-    });
+    const upPjt = { ...this.props.project[0], ...this.state };
+    delete upPjt.robots;
+    this.props.updateOneProject(upPjt);
   }
 
   render() {

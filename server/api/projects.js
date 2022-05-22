@@ -2,6 +2,8 @@ const Project = require('../db/project');
 const project = require('express').Router();
 const Robot = require('../db/robot');
 
+//in api/projects
+
 project.get('/', async (req, res, next) => {
   try {
     const projects = await Project.findAll();
@@ -32,11 +34,13 @@ project.get('/:id', async (req, res, next) => {
   }
 });
 
+
 project.put('/:id', async (req, res, next) => {
   try {
     const proj = await Project.findByPk(req.params.id);
-    await proj.update(res.body);
-    res.send(proj);
+
+    await proj.update(req.body);
+    await res.send(proj);
   } catch (error) {
     next(error);
   }
