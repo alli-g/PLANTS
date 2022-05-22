@@ -22,20 +22,6 @@ class UpdateProject extends React.Component {
     });
   }
 
-  componentWillUnmount() {
-    this.props.clearProject();
-  }
-  // componentDidUpdate(prevProps) {
-  //   let curr = this.props.project[0];
-  //   if (!Array.isArray(prevProps.project) || prevProps.project.length > 0) {
-  //     this.setState({
-  //       id: curr.id || 0,
-  //       title: curr.title || '',
-  //       complete: curr.complete || false,
-  //     });
-  //   }
-  // }
-
   valueChange(evt) {
     this.setState({
       [evt.target.name]: evt.target.value,
@@ -45,18 +31,15 @@ class UpdateProject extends React.Component {
   submit(evt) {
     evt.preventDefault();
     const upPjt = { ...this.props.project[0], ...this.state };
-    delete upPjt.robots;
+    // const rbts = upPjt.robots;
+    // input rbts into updateOneProject?
+    // delete upPjt.robots;
     this.props.updateOneProject(upPjt);
   }
 
   render() {
-    // let project = this.props.singleProject;
-    // let singleProject = project[0];
-
-    let singleProject = this.props.project;
-
+    let singleProject = this.props.project[0];
     return (
-      // <div> edit Page</div>
       <div>
         {singleProject ? (
           <div>
@@ -94,9 +77,9 @@ class UpdateProject extends React.Component {
               <ul>
                 {singleProject.robots.map((rbt) => {
                   return (
-                    <Link to={`/robots/${rbt.id}`} key={rbt.id}>
-                      {rbt.name}
-                    </Link>
+                    <p key={rbt.id}>
+                      <Link to={`/robots/${rbt.id}`}>{rbt.name}</Link>
+                    </p>
                   );
                 })}
               </ul>

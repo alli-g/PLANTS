@@ -5,6 +5,7 @@ const GOT_ALL_PROJECTS = 'GOT_ALL_PROJECTS';
 const CREATE_PROJECT = 'CREATE_PROJECT';
 const DELETE_PROJECT = 'DELETE_PROJECT';
 const UPDATE_PROJECT = 'UPDATE_PROJECT';
+const REMOVE_ROBOT = 'REMOVE_ROBOT';
 
 //ACTION CREATORS
 export const setProjects = () => {};
@@ -29,6 +30,12 @@ export const updateProject = (project) => ({
   project,
 });
 
+// export const removeRobot = (project, rbt) => ({
+//   type: REMOVE_ROBOT,
+//   project,
+//   removedRobot: rbt,
+// });
+
 //THUNKS
 
 export const getAllProjects = () => {
@@ -42,12 +49,11 @@ export const getAllProjects = () => {
   };
 };
 
-export const createNewProject = (project, history) => {
+export const createNewProject = (project) => {
   return async (dispatch) => {
     try {
       const { data } = await axios.post('/api/projects', project);
       dispatch(createProject(data));
-      // history.push('/');
     } catch (error) {
       console.error(error);
     }
@@ -73,6 +79,22 @@ export const updateOneProject = (project, history) => {
 
       dispatch(updateProject(data));
       history.push(`/projects/${project.id}`);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+};
+
+export const removeOneRobot = (robot, history) => {
+  return async (dispatch) => {
+    try {
+      const { data } = await axios.put(
+        `/api/projects/${robot.projectIdUnassign}`,
+        robot
+      );
+
+      dispatch(updateProject(data));
+      history.push(`/projects/${robot.projectIdUnassign}`);
     } catch (error) {
       console.error(error);
     }

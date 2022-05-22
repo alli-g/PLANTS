@@ -105,9 +105,9 @@ class NewProject extends React.Component {
   }
 }
 
-const mapDispatch = (dispatch, { history }) => {
+const mapDispatch = (dispatch) => {
   return {
-    createNewProject: (pjt) => dispatch(createNewProject(pjt, history)),
+    createNewProject: (pjt) => dispatch(createNewProject(pjt)),
   };
 };
 

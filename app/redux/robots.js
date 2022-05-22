@@ -5,6 +5,7 @@ const GOT_ALL_ROBOTS = 'GOT_ALL_ROBOTS';
 const CREATE_ROBOT = 'CREATE_ROBOT';
 const DELETE_ROBOT = 'DELETE_ROBOT';
 const UPDATE_ROBOT = 'UPDATE_ROBOT';
+const REMOVE_PROJECT = 'REMOVE_PROJECT';
 
 //ACTION CREATORS
 export const setRobots = () => {};
@@ -26,6 +27,11 @@ export const deleteRobot = (robot) => ({
 
 export const updateRobot = (robot) => ({
   type: UPDATE_ROBOT,
+  robot,
+});
+
+export const removeProject = (robot) => ({
+  type: REMOVE_PROJECT,
   robot,
 });
 
@@ -78,6 +84,8 @@ export const updateOneRobot = (robot, history) => {
   };
 };
 
+// export const removeOneProject = (robot, )
+
 // Take a look at app/redux/index.js to see where this reducer is
 // added to the Redux store with combineReducers
 const initialState = [];
@@ -89,6 +97,8 @@ export default function robotsReducer(state = initialState, action) {
     case DELETE_ROBOT:
       return state.filter((rbt) => rbt.id !== action.robot.id);
     case CREATE_ROBOT:
+      return [...state, action.robot];
+    case REMOVE_PROJECT:
       return [...state, action.robot];
     case UPDATE_ROBOT:
       return state.map((rbt) => {

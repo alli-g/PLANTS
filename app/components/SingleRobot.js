@@ -14,14 +14,14 @@ class SingleRobot extends React.Component {
     return (
       <div>
         {singleRobot ? (
-          <div>
+          <div className="robot">
             <img src={singleRobot.imageUrl} />
             <h1> {singleRobot.name}</h1>
             <ul>
               <li>Fueled by {singleRobot.fuelType}</li>
               <li>Currently sitting at {singleRobot.fuelLevel}%</li>
             </ul>
-            <button>
+            <button type="button">
               <Link to={`/robots/${singleRobot.id}/edit`}>Edit Robot</Link>
             </button>
             <h3>Assigned Projects</h3>

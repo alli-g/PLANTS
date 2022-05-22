@@ -18,7 +18,7 @@ class AllProjects extends React.Component {
     return (
       <div>
         <h2 className="section-title"> All Projects </h2>
-        <ul className="container">
+        <ul className="projects">
           {Array.isArray(projects)
             ? projects.map((project) => (
                 <div className="card" key={project.id}>

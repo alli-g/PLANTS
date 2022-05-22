@@ -5,7 +5,19 @@
 
 * {
   box-sizing: border-box;
-  font-family: arial, sans-serif;
+  font-family: 'Poppins', sans-serif;
+}
+a {
+  text-decoration: none;
+  color: #333333;
+}
+a:visited {
+  text-decoration: none;
+  color: #333333;
+}
+a:hover {
+  text-decoration: none;
+  color: chocolate;
 }
 
 body {
@@ -17,12 +29,15 @@ body {
 }
 
 nav {
+  display: flex;
+  justify-content: space-around;
   align-items: center;
-  background-color: #333333;
+  background-color: rgb(78, 123, 234);
   color: #c0c0c0;
   display: flex;
   height: 80px;
   padding: 10px;
+  font-size: 50px;
 }
 
 main {
@@ -30,4 +45,45 @@ main {
   display: flex;
   flex-direction: column;
   justify-content: center;
+}
+
+.robot {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  align-content: flex-start;
+}
+
+.card {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.projects {
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  font-family: Optima, sans-serif;
+}
+
+img {
+  max-width: 500px;
+}
+
+button {
+  max-width: 100px;
+  max-height: 70px;
+  align-self: flex-end;
+  border-style: none;
+  box-sizing: border-box;
+  justify-content: center;
+  padding: 2px 4px;
+}
+
+button:hover {
+  border-style: dotted;
 }

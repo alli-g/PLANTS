@@ -34,13 +34,16 @@ project.get('/:id', async (req, res, next) => {
   }
 });
 
-
 project.put('/:id', async (req, res, next) => {
   try {
     const proj = await Project.findByPk(req.params.id);
-
-    await proj.update(req.body);
-    await res.send(proj);
+    if (req.body.robots) {
+      await proj.update(req.body);
+      await res.send(proj);
+    } else if (req.body.projectIdUnassign) {
+      await proj.removeRobot(req.body.rbt.id);
+      await res.send(proj);
+    }
   } catch (error) {
     next(error);
   }

@@ -9,6 +9,7 @@ import NewRobot from './NewRobot';
 import NewProject from './NewProject';
 import UpdateProject from './UpdateProject';
 import UpdateRobot from './UpdateRobot';
+import MainPage from './Main';
 
 const Routes = () => {
   return (
@@ -16,10 +17,7 @@ const Routes = () => {
       <div>
         <NavBar />
         <main>
-          <h1>
-            Welcome to StackBot Project Management: your robot employees are
-            awaiting assignments!
-          </h1>
+          <MainPage />
           <Switch>
             <Route exact path="/robots" component={AllRobots} />
             <Route exact path="/robots/create" component={NewRobot} />

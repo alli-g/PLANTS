@@ -35,6 +35,7 @@ The requirements below are broken into separate **tiers**, which model the way w
 - [x] Robots may be associated with many projects. Likewise, projects may be associated with many robots.
 
 #### Seed
+
 - [x] Running the seed file creates projects and robots for demonstration purposes
 
 Congrats! You have completed your first vertical slice! Make sure to `commit -m "Feature: Get all robots and projects"` before moving on (see RUBRIC.md - points are awarded/deducted for a proper git workflow)!
@@ -80,6 +81,7 @@ Congrats! You have completed your second vertical slice! Make sure to `commit -m
 - [x] Write a component to display a form for adding a new robot that contains _at least_ an input for name
 - [x] Display this component as part of the all-robots view, alongside the list of robots
 - Submitting the form with valid data should:
+
   - [x] Make an AJAX request that causes the new robot to be persisted in the database
   - [x] Add the new robot to the list of robots without needing to refresh the page
 
@@ -106,6 +108,7 @@ Congrats! You have completed your third vertical slice! Make sure to `commit -m 
 
 - [x] In the all-robots view, include an `X` button next to each robot
 - Clicking the `X` button should:
+
   - [x] Make an AJAX request that causes that robot to be removed from database
   - [x] Remove the robot from the list of robots without needing to refresh the page
 
@@ -141,14 +144,13 @@ Congrats! You have completed your fourth vertical slice! Make sure to `commit -m
 - Submitting the form with valid data should:
   - [x] Make an AJAX request that causes that project to be updated in the database
   - [x] Update the project in the current view without needing to refresh the page
-- [ ] In the single-project view, display an `Unassign` button next to each robot assigned to it, which unassigns that robot (in the database as well as this view)
-- [ ] In the single-project view, display a `Complete` button, which marks the project as completed (in the database as well as this view)
+- [x] In the single-project view, display an `Unassign` button next to each robot assigned to it, which unassigns that robot (in the database as well as this view)
+- [x] In the single-project view, display a `Complete` button, which marks the project as completed (in the database as well as this view)
 
 #### Backend
 
 - [x] Write a route to update an existing project
 - [ ] Write a route to update an existing robot
-
 
 Congrats! You have completed your fifth vertical slice! Make sure to `commit -m "Feature: Update Robot and Project"` before moving on (see RUBRIC.md - points are awarded/deducted for a proper git workflow)!
 

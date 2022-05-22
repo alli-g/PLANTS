@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { updateOneRobot } from '../redux/robots';
-import { fetchRobot, getOneRobot } from '../redux/singleRobot';
+import {  getOneRobot } from '../redux/singleRobot';
 import { Link } from 'react-router-dom';
 
 class UpdateRobot extends React.Component {

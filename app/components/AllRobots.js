@@ -28,13 +28,15 @@ class AllRobots extends React.Component {
                       <img src={robot.imageUrl} />
                     </li>
                   </Link>
-                  <button
-                    type="button"
-                    className="delete"
-                    onClick={() => this.props.deleteOneRobot(robot.id)}
-                  >
-                    X
-                  </button>
+                  <p>
+                    <button
+                      type="button"
+                      className="delete"
+                      onClick={() => this.props.deleteOneRobot(robot.id)}
+                    >
+                      X
+                    </button>
+                  </p>
                 </div>
               ))
             : 'No robots here'}
