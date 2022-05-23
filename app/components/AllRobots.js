@@ -20,25 +20,29 @@ class AllRobots extends React.Component {
         <h2 className="section-title"> All Robots </h2>
         <ul className="container">
           {Array.isArray(robots)
-            ? robots.map((robot) => (
-                <div className="card" key={robot.id}>
-                  <Link to={`/robots/${robot.id}`}>
-                    <li>
-                      <h3>{robot.name}</h3>
-                      <img src={robot.imageUrl} />
-                    </li>
-                  </Link>
-                  <p>
-                    <button
-                      type="button"
-                      className="delete"
-                      onClick={() => this.props.deleteOneRobot(robot.id)}
-                    >
-                      X
-                    </button>
-                  </p>
-                </div>
-              ))
+            ? robots.map((robot) => {
+                if (robot) {
+                  return (
+                    <div className="card" key={robot.id}>
+                      <Link to={`/robots/${robot.id}`}>
+                        <li>
+                          <h3>{robot.name}</h3>
+                          <img src={robot.imageUrl} />
+                        </li>
+                      </Link>
+                      <p>
+                        <button
+                          type="button"
+                          className="delete"
+                          onClick={() => this.props.deleteOneRobot(robot.id)}
+                        >
+                          X
+                        </button>
+                      </p>
+                    </div>
+                  );
+                }
+              })
             : 'No robots here'}
         </ul>
         <div>

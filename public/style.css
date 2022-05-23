@@ -5,7 +5,7 @@
 
 * {
   box-sizing: border-box;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Lato', sans-serif;
 }
 a {
   text-decoration: none;
@@ -20,8 +20,12 @@ a:hover {
   color: chocolate;
 }
 
+h1 {
+  margin: 0 0 1.5rem;
+}
+
 body {
-  background: linear-gradient(#ffffff, #c0c0c0);
+  background: (#c0c0c0);
   height: 100vh;
   padding: 0;
   margin: 0;
@@ -32,12 +36,32 @@ nav {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  background-color: rgb(78, 123, 234);
+  background-color: rgb(78, 216, 234);
   color: #c0c0c0;
   display: flex;
   height: 80px;
-  padding: 10px;
+  padding: 10px 20px 0;
   font-size: 50px;
+  width: 100%;
+}
+
+#section-title {
+  text-underline-position: below;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+input,
+select {
+  border-radius: 3px;
+  border: 1px solid #ccc;
+  display: inline-block;
+  padding: 8px 6px;
+  width: 200px;
 }
 
 main {
@@ -50,11 +74,16 @@ main {
 .robot {
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  justify-content: space-between;
   align-items: flex-start;
   align-content: flex-start;
 }
-
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
 .card {
   display: flex;
   flex-direction: row;
@@ -85,5 +114,5 @@ button {
 }
 
 button:hover {
-  border-style: dotted;
+  opacity: 0.5;
 }

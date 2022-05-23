@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { updateOneRobot } from '../redux/robots';
-import {  getOneRobot } from '../redux/singleRobot';
+import { getOneRobot } from '../redux/singleRobot';
 import { Link } from 'react-router-dom';
 
 class UpdateRobot extends React.Component {
@@ -18,7 +18,7 @@ class UpdateRobot extends React.Component {
   componentDidMount() {
     this.props.getSingleRobotInReact(this.props.match.params.id).then(() => {
       let robot = this.props.robot[0];
-      this.setState({ name: robot.name, complete: robot.fuelLevel });
+      this.setState({ name: robot.name, fuelLevel: robot.fuelLevel });
     });
   }
 
@@ -31,7 +31,7 @@ class UpdateRobot extends React.Component {
   submit(evt) {
     evt.preventDefault();
     const upRbt = { ...this.props.robot[0], ...this.state };
-    delete upRbt.projects;
+
     this.props.updateOneRobot(upRbt);
   }
 

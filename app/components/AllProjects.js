@@ -17,25 +17,29 @@ class AllProjects extends React.Component {
     let projects = this.props.allProjectsInReact;
     return (
       <div>
-        <h2 className="section-title"> All Projects </h2>
+        <h2 className="section-title"> ALL PROJECTS!! </h2>
         <ul className="projects">
           {Array.isArray(projects)
-            ? projects.map((project) => (
-                <div className="card" key={project.id}>
-                  <Link to={`/projects/${project.id}`}>
-                    <h3>{project.title} </h3>
-                    <p>Due by {project.deadline.slice(0, 10)}</p>
-                    <p>priority level: {project.priority}</p>
-                  </Link>
-                  <button
-                    type="button"
-                    className="delete"
-                    onClick={() => this.props.deleteOneProject(project.id)}
-                  >
-                    X
-                  </button>
-                </div>
-              ))
+            ? projects.map((project) => {
+                if (project) {
+                  return (
+                    <div className="card" key={project.id}>
+                      <Link to={`/projects/${project.id}`}>
+                        <h3>{project.title} </h3>
+                        <p>Due by {project.deadline.slice(0, 10)}</p>
+                        <p>priority level: {project.priority}</p>
+                      </Link>
+                      <button
+                        type="button"
+                        className="delete"
+                        onClick={() => this.props.deleteOneProject(project.id)}
+                      >
+                        X
+                      </button>
+                    </div>
+                  );
+                }
+              })
             : 'No projects here'}
         </ul>
         <div>

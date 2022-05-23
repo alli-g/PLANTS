@@ -31,10 +31,7 @@ class UpdateProject extends React.Component {
   submit(evt) {
     evt.preventDefault();
     const upPjt = { ...this.props.project[0], ...this.state };
-    // const rbts = upPjt.robots;
-    // input rbts into updateOneProject?
-    // delete upPjt.robots;
-    console.log(upPjt);
+
     this.props.updateOneProject(upPjt);
   }
 

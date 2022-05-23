@@ -1,4 +1,7 @@
-# Junior Phase Final Project
+#YOUTUBE VIDEO LINK
+https://youtu.be/j2ZM2sUXk7c
+
+#Junior Phase Final Project
 
 ## Getting started
 
@@ -26,8 +29,8 @@ For this project, you must use Express to handle HTTP requests and Sequelize to 
 
 For the requirements and rubric, refer to the following two files:
 
-* `REQUIREMENTS.md` - contains the functional requirements of the project
-* `RUBRIC.md` - contains the grading rubric for additional factors, as well as the formula for calculating the total score
+- `REQUIREMENTS.md` - contains the functional requirements of the project
+- `RUBRIC.md` - contains the grading rubric for additional factors, as well as the formula for calculating the total score
 
 Make sure to read them carefully!
 
@@ -41,9 +44,9 @@ Take a look in the wireframes folder as a reference for how your front-end _coul
 
 ### Video Walkthrough
 
-Please submit a short, 5 minute (max) screencast of a walk-through of the functionality for each user story in your app. E.g. for "As a user, I can create a project", you can fill out the form for creating a project and then see the new project appear in the projects list. *There is no need to show us the code you wrote.* We recommend using Quicktime to record the screencast (instructions on how to do that [here](https://support.apple.com/kb/PH5882?locale=en_US&viewlocale=en_US)).
+Please submit a short, 5 minute (max) screencast of a walk-through of the functionality for each user story in your app. E.g. for "As a user, I can create a project", you can fill out the form for creating a project and then see the new project appear in the projects list. _There is no need to show us the code you wrote._ We recommend using Quicktime to record the screencast (instructions on how to do that [here](https://support.apple.com/kb/PH5882?locale=en_US&viewlocale=en_US)).
 
-Once you've recorded your screencast, please *upload it to YouTube as an unlisted video*. **Include a link to the video at the top of your repo's README** and include your repo link in the video description. This will aid us in evaluating your submission.
+Once you've recorded your screencast, please _upload it to YouTube as an unlisted video_. **Include a link to the video at the top of your repo's README** and include your repo link in the video description. This will aid us in evaluating your submission.
 
 Well before the deadline, we recommend practicing this by recording a very short screencast and uploading it as an unlisted video. If you encounter any technical issues, reach out to us so that we can help you resolve them.
 
