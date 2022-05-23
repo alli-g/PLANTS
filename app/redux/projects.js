@@ -30,11 +30,9 @@ export const updateProject = (project) => ({
   project,
 });
 
-// export const removeRobot = (project, rbt) => ({
-//   type: REMOVE_ROBOT,
-//   project,
-//   removedRobot: rbt,
-// });
+export const removeRobot = () => ({
+  type: REMOVE_ROBOT,
+});
 
 //THUNKS
 
@@ -93,7 +91,7 @@ export const removeOneRobot = (robot, history) => {
         robot
       );
 
-      dispatch(updateProject(data));
+      dispatch(removeRobot(data));
       history.push(`/projects/${robot.projectIdUnassign}`);
     } catch (error) {
       console.error(error);
@@ -113,6 +111,8 @@ export default function projectsReducer(state = initialState, action) {
       return [...state, action.project];
     case DELETE_PROJECT:
       return state.filter((pjt) => pjt.id !== action.project.id);
+    case REMOVE_ROBOT:
+      return state;
     case UPDATE_PROJECT:
       return state.map((pjt) => {
         if (pjt.id === action.project.id) {

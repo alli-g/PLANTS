@@ -150,7 +150,7 @@ Congrats! You have completed your fourth vertical slice! Make sure to `commit -m
 #### Backend
 
 - [x] Write a route to update an existing project
-- [ ] Write a route to update an existing robot
+- [x] Write a route to update an existing robot
 
 Congrats! You have completed your fifth vertical slice! Make sure to `commit -m "Feature: Update Robot and Project"` before moving on (see RUBRIC.md - points are awarded/deducted for a proper git workflow)!
 

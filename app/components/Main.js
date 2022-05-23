@@ -4,8 +4,8 @@ const MainPage = () => {
   return (
     <div id="mainpage">
       <h1 className="header">
-        Welcome to StackBot Project Management: your robot employees are
-        awaiting assignments!
+        Welcome to StackBot Project Management: the leading provider of robot
+        management systems!
       </h1>
     </div>
   );

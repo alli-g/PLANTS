@@ -37,6 +37,21 @@ robot.post('/', async (req, res, next) => {
   }
 });
 
+robot.put('/:id', async (req, res, next) => {
+  try {
+    const upRobot = await Robot.findByPk(req.params.id);
+    if (req.body.projects) {
+      await upRobot.update(req.body);
+      res.send(upRobot);
+    } else if (req.body.robotIdUnassign) {
+      await upRobot.removeProject(req.body.pjt.id);
+      await res.send(upRobot);
+    }
+  } catch (error) {
+    next(error);
+  }
+});
+
 robot.delete('/:id', async (req, res, next) => {
   try {
     const byeRobot = await Robot.findByPk(req.params.id);
@@ -44,16 +59,6 @@ robot.delete('/:id', async (req, res, next) => {
     res.send(byeRobot);
   } catch (error) {
     console.error(error);
-  }
-});
-
-robot.put('/:id', async (req, res, next) => {
-  try {
-    const upRobot = await Robot.findByPk(req.params.id);
-    await upRobot.update(req.body);
-    res.send(upRobot);
-  } catch (error) {
-    console.err(error);
   }
 });
 

@@ -30,9 +30,8 @@ export const updateRobot = (robot) => ({
   robot,
 });
 
-export const removeProject = (robot) => ({
+export const removeProject = () => ({
   type: REMOVE_PROJECT,
-  robot,
 });
 
 //THUNKS
@@ -84,7 +83,20 @@ export const updateOneRobot = (robot, history) => {
   };
 };
 
-// export const removeOneProject = (robot, )
+export const removeOneProject = (project, history) => {
+  return async (dispatch) => {
+    try {
+      const { data } = await axios.put(
+        `/api/robots/${project.robotIdUnassign}`,
+        project
+      );
+      dispatch(removeProject(data));
+      history.push(`/robots/${project.robotIdUnassign}`);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+};
 
 // Take a look at app/redux/index.js to see where this reducer is
 // added to the Redux store with combineReducers
@@ -99,7 +111,7 @@ export default function robotsReducer(state = initialState, action) {
     case CREATE_ROBOT:
       return [...state, action.robot];
     case REMOVE_PROJECT:
-      return [...state, action.robot];
+      return state;
     case UPDATE_ROBOT:
       return state.map((rbt) => {
         if (rbt.id === action.robot.id) {

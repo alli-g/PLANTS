@@ -17,8 +17,9 @@ const Routes = () => {
       <div>
         <NavBar />
         <main>
-          <MainPage />
           <Switch>
+            <Route exact path="/" component={MainPage} />
+
             <Route exact path="/robots" component={AllRobots} />
             <Route exact path="/robots/create" component={NewRobot} />
             <Route exact path="/robots/:id" component={SingleRobot} />

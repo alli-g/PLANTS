@@ -34,6 +34,7 @@ class UpdateProject extends React.Component {
     // const rbts = upPjt.robots;
     // input rbts into updateOneProject?
     // delete upPjt.robots;
+    console.log(upPjt);
     this.props.updateOneProject(upPjt);
   }
 
