@@ -1,0 +1,71 @@
+Arguments: 
+  /Users/allig/.nvm/versions/node/v16.14.0/bin/node /Users/allig/.nvm/versions/node/v16.14.0/bin/yarn
+
+PATH: 
+  /Users/allig/.nvm/versions/node/v16.14.0/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/allig/opt/anaconda3/bin:/Users/allig/opt/anaconda3/condabin:/Users/allig/.nvm/versions/node/v16.14.0/bin:/opt/homebrew/bin:/opt/homebrew/sbin
+
+Yarn version: 
+  1.22.18
+
+Node version: 
+  16.14.0
+
+Platform: 
+  darwin arm64
+
+Trace: 
+  SyntaxError: /Users/allig/FSA Checkpoints/PLANTS/package.json: Unexpected token / in JSON at position 558
+      at JSON.parse (<anonymous>)
+      at /Users/allig/.nvm/versions/node/v16.14.0/lib/node_modules/yarn/lib/cli.js:1625:59
+      at Generator.next (<anonymous>)
+      at step (/Users/allig/.nvm/versions/node/v16.14.0/lib/node_modules/yarn/lib/cli.js:310:30)
+      at /Users/allig/.nvm/versions/node/v16.14.0/lib/node_modules/yarn/lib/cli.js:321:13
+
+npm manifest: 
+  {
+    "name": "plants",
+    "version": "0.1.0",
+  
+    "dependencies": {
+      "@testing-library/jest-dom": "^5.11.4",
+      "@testing-library/react": "^11.1.0",
+      "@testing-library/user-event": "^12.1.10",
+      "firebase": "^9.6.0",
+      "react": "^17.0.2",
+      "react-dom": "^17.0.2",
+      "react-router-dom": "^6.0.2",
+      "react-scripts": "4.0.3",
+      "web-vitals": "^1.0.1",
+      "yarn": "^1.22.18"
+    },
+    "scripts": {
+      "start": "react-scripts start",
+      "build": "react-scripts build",
+      "test": "react-scripts test",
+      "eject": "react-scripts eject"
+    },
+    // "eslintConfig": {
+    //   "extends": [
+    //     "react-app",
+    //     "react-app/jest"
+    //   ]
+    // },
+    "browserslist": {
+      "production": [
+        ">0.2%",
+        "not dead",
+        "not op_mini all"
+      ],
+      "development": [
+        "last 1 chrome version",
+        "last 1 firefox version",
+        "last 1 safari version"
+      ]
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
