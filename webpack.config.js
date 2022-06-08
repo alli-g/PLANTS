@@ -14,6 +14,10 @@ module.exports = {
   resolve: {
     extensions: ['.js', '.jsx']
   },
+  loaders:[{
+    test:/\.css$/,
+    loader:'style-loader!css-loader'
+  }],
   module: {
     rules: [
       {
