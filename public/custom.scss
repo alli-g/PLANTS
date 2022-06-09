@@ -1,0 +1,27 @@
+@import 'custom';
+@import '~bootstrapp/scss/bootstrap';
+.App {
+  text-align: center;
+}
+body {
+  padding: 0%;
+  margin: 0%;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+nav {
+  margin: 0;
+  width: 100%;
+  height: 80px;
+  background-color: goldenrod;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  color: white;
+  text-decoration: none;
+}
+
+a {
+  color: rgb(114, 45, 37);
+  margin: 10px;
+}
