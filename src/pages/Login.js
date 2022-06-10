@@ -2,7 +2,7 @@ import React from 'react';
 import { auth, provider } from '../firebase-config';
 import { signInWithPopup } from 'firebase/auth';
 import { useNavigate } from 'react-router-dom';
-import Button from 'react-bootstrap/Button'
+import Button from 'react-bootstrap/Button';
 function Login({ setIsAuth }) {
   let navigate = useNavigate();
 
@@ -10,13 +10,19 @@ function Login({ setIsAuth }) {
     signInWithPopup(auth, provider).then((result) => {
       localStorage.setItem('isAuth', true);
       setIsAuth(true);
-      navigate('/');
+      navigate('/yourplants');
     });
   };
   return (
-    <div className="loginPage">
-      <p>Sign-in with Google if you care about your plants</p>
-      <Button className="login-with-google-btn" onClick={signInWithGoogle}>
+    <div>
+      <p className="login-header">
+        Sign-in with Google if you care about your plants
+      </p>
+      <Button
+      id="login-button"
+        className="btn-primary btn-lg btn-block btn-secondary"
+        onClick={signInWithGoogle}
+      >
         Sign In with Google
       </Button>
     </div>

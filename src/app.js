@@ -24,9 +24,9 @@ function App() {
   };
   return (
     <Router>
-      <Navbar bg="light" variant="light">
-        <Navbar.Brand>Treat yo plants right</Navbar.Brand>
-        <Nav.Link href="/"> Home</Nav.Link>
+      <Navbar className="nav justify-content-evenly" variant="light">
+        <Navbar.Brand>Plants-R-Us</Navbar.Brand>
+        {!isAuth && <Nav.Link href="/"> Home</Nav.Link>}
         {isAuth && <Nav.Link href="/yourplants">Your Plants</Nav.Link>}
         {isAuth && <Nav.Link href="/createplant">Add New Plant</Nav.Link>}
         {!isAuth ? (

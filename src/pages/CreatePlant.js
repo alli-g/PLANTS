@@ -10,6 +10,7 @@ function CreatePlant({ isAuth }) {
   const [name, setName] = useState('');
   const [plantType, setPlantType] = useState('high');
   const [lastWatered, setLastWatered] = useState(new Date());
+  const [plantPic, setPlantPic] = useState('');
   const [plantsWateringSched, setPlantWatering] = useState(3);
   const [allWateringSched, setWatering] = useState({
     high: 3,
@@ -28,9 +29,10 @@ function CreatePlant({ isAuth }) {
       plantType,
       lastWatered,
       plantsWateringSched,
+      plantPic,
       owner: { name: auth.currentUser.displayName, id: auth.currentUser.uid },
     });
-    navigate('/');
+    navigate('/yourplants');
   };
 
   useEffect(() => {
@@ -38,6 +40,11 @@ function CreatePlant({ isAuth }) {
       navigate('/login');
     }
   });
+
+  const handleChange = (event) => {
+    setPlantPic(event.target.files[0]);
+    console.log(event)
+  };
 
   return (
     <div className="createPlantPage">
@@ -90,6 +97,7 @@ function CreatePlant({ isAuth }) {
               />
               <p></p>
             </div>
+            <Form.Control type='file' placeholder='Plant Pic Plz' onClick={handleChange}></Form.Control>
           </Form.Group>
           <div>
             <Button variant="secondary" onClick={createPlant}>
